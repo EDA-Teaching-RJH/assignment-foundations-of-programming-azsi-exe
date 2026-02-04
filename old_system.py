@@ -31,7 +31,7 @@ def run_system_monolith():
             
             # only 4 options (starting from 0), therefore changing this to length of the actual list would fix any errors.
             for i in range(len(n)):
-                print(n[i] + " - " + r[i]) 
+                print(n[i] + " - " + r[i] + "-" + d[i]) # prints division as well
                 
         elif opt == "2":
             new_name = input("Name: ")
@@ -48,6 +48,7 @@ def run_system_monolith():
         elif opt == "3":
             rem = input("Name to remove: ")
            
+
             idx = n.index(rem)
             n.pop(idx)
             r.pop(idx)
