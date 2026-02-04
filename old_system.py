@@ -10,9 +10,10 @@ def run_system_monolith():
     print("WELCOME TO FLEET COMMAND")
     
     
-    loading += 1
+    loading = 0
     while loading < 5:
         print("Loading module " + str(loading))
+        loading += 1
         
     
     while True:
