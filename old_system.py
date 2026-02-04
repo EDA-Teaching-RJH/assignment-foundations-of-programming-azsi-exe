@@ -9,12 +9,12 @@ def run_system_monolith():
     print("...")
     print("WELCOME TO FLEET COMMAND")
     
-    
+
     loading = 0
     while loading < 5:
         print("Loading module " + str(loading))
-        loading += 1
-        
+        loading += 1     # Stops loop once loading variable hits 5
+
     
     while True:
         print("\n--- MENU ---")
@@ -29,7 +29,8 @@ def run_system_monolith():
         if opt == "1":  
             print("Current Crew List:")
             
-            for i in range(10):
+            # only 4 options (starting from 0), therefore changing this to length of the actual list would fix any errors.
+            for i in range(len(n)):
                 print(n[i] + " - " + r[i]) 
                 
         elif opt == "2":
