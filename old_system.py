@@ -39,7 +39,10 @@ def run_system_monolith():
             new_div = input("Division: ")
             
            
+           # if only the name list is updated, it causes the lists to be different lengths, causing an error when viewing as it relies on the lists being parallel (pulling data for 7th crew member: n[6] + r[6] + d[6] would only be possible if lists were updated correctly)
             n.append(new_name)
+            r.append(new_rank)
+            d.append(new_div)
             print("Crew member added.")
             
         elif opt == "3":
