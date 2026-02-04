@@ -7,4 +7,5 @@
 # Line 44 + 45 (additional line made) =  if only the name list is updated, it causes the lists to be different lengths, causing an error when viewing as it relies on the lists being parallel (pulling data for 7th crew member: n[6] + r[6] + d[6] would only be possible if lists were updated correctly).
 # Line 53 - 60 = creating if statement prevents crash if the name entered does not exist in the list.
 # Line 67 = "commander" not defined as a rank. it separates rank into 2 seprate values, as it is checking "Commander" by itself, not as a rank.
+# Line 69 =  count is a str, not int, therefore a comma is used. otherwise + would be used.
 

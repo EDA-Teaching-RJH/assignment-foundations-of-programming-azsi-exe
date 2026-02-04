@@ -57,7 +57,7 @@ def run_system_monolith():
                 d.pop(idx)
                 print("Removed.")
             else:
-                print("Crew member not found.")
+                print("Crew member was not found.")
             
         elif opt == "4":
             print("Analyzing...")
@@ -66,7 +66,7 @@ def run_system_monolith():
             for rank in r:
                 if rank == "Captain" or rank == "Commander": # separates rank into 2 seprate values, as it is checking "Commander" by itself, not as a rank
                     count = count + 1
-            print("High ranking officers: " + count) 
+            print("High ranking officers: ", count) # count is a str, not int, therefore a comma is used. otherwise + would be used.
             
         elif opt == "5":
             print("Shutting down.")
