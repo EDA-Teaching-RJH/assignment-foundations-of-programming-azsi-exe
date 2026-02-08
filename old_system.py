@@ -31,7 +31,7 @@ def run_system_monolith():
             
             # only 4 options (starting from 0), therefore changing this to length of the actual list would fix any errors.
             for i in range(len(n)):
-                print(n[i] + " - " + r[i] + "-" + d[i]) # prints division as well
+                print(n[i] + " - " + r[i] + " - " + d[i]) # prints division as well
                 
         elif opt == "2":
             new_name = input("Name: ")
@@ -66,7 +66,7 @@ def run_system_monolith():
             for rank in r:
                 if rank == "Captain" or rank == "Commander": # separates rank into 2 seprate values, as it is checking "Commander" by itself, not as a rank
                     count = count + 1
-            print("High ranking officers: ", count) # count is a str, not int, therefore a comma is used. otherwise + would be used.
+            print("High ranking officers: ", count) # count is an int, not a string, therefore a comma is used. otherwise + would be used. # or "print("High ranking officers: " + str(count))""
             
         elif opt == "5":
             print("Shutting down.")
@@ -92,7 +92,6 @@ def run_system_monolith():
         fuel = 100
         consumption = 0
         while fuel > 0:
-            
             print("Idling...")
             break 
             
