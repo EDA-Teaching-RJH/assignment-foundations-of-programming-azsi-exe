@@ -49,3 +49,38 @@ def display_menu(user_name):
     return option
 - This updated display menu incorporates all functions created. Option for user to also create a username, addressed by the system, has also been created.
 
+4. add_member(names, ranks, divs, ids)
+def add_member(names, ranks, divs, ids):
+    print("\n--- ADD MEMBER ---")
+    new_name = input("Name: ").strip()
+    new_rank = input("Rank: ").strip()
+    new_division = input("Division: ").strip()
+    new_id = input("ID: ").strip()
+
+    if new_rank not in allowed_ranks:
+        print("Rank invalid")
+        print("Please choose from: ")
+        for r in allowed_ranks:
+            print(r)
+        return
+        
+    if new_division not in allowed_divisions:
+        print("Division invalid")
+        print("Please choose from: ")
+        for d in allowed_divisions:
+            print(d)
+        return
+    
+    if new_id in ids:
+        print("The list of ID's below have already been created: ")
+        for i in ids:
+            print(i)
+        return
+    
+    names.append(new_name)
+    ranks.append(new_rank)
+    divs.append(new_division)
+    ids.append(new_id)
+
+    print("New member added successfully")
+- The add member function allows user to add new crew members. User asked for new memeber details. If members rank or division doesn't match list, user is reminded what was available. if id was similar to previously used ids attached to other crew members, it would remind user ids that are used.
