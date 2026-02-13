@@ -110,3 +110,12 @@ def update_rank(names, ranks, ids):
 
     print(f"You have officially updated {name}'s rank to {new_rank}")
 - Update rank was added to allow user to update any of the members ranks by first identifying the name in the names list. The system would find the positioning of the name in the list, and use it to identify the name and rank (as they are parallel lists). Once the user inputs a new rank (if it is included in he valid ranks), it would update. If nto user would be reminded of ranks allowed.
+
+6. display_roster(names, ranks, divs, ids) function
+def display_roster(names, ranks, divs, ids):
+    print("--- DISPLAY ROSTER ---") # update member rank
+    print("--------------------------------")
+
+    for i in range(len(names)): #displays crew details in parallel lists
+        print(names[i], "-", ranks[i], "-", divs[i], "-", ids[i])
+- Display roster created to display all crew members details currently within the parallel lists, using a for loop.

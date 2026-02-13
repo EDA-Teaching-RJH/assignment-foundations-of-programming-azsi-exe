@@ -25,27 +25,27 @@ def display_menu(user_name):
     if user_name == " ": # .strip() so that user can't have a name with spaces or nothing, e.g. "   ", or ""
         user_name = input("What is your name?: ").strip()
 
-    print ("\n-------------------------")
+    print ("-------------------------")
     print("WELCOME TO FLEET COMMAND")
     print("WELCOME BACK: ", user_name)
-    print ("\n-------------------------")
+    print ("-------------------------")
 
-    print("\n--- MENU ---")
-    print("1. Add member")
-    print("2. Remove member")
-    print("3. Update rank")
-    print("4. Display roster")
-    print("5. Search crew")
-    print("6. Filter by division")
-    print("7. Calculate payroll")
-    print("8. Count officers")
-    print("9. Exit")
+    print("--- MENU ---")
+    print("1/ Add member")
+    print("2/ Remove member")
+    print("3/ Update rank")
+    print("4/ Display roster")
+    print("5/ Search crew")
+    print("6/ Filter by division")
+    print("7/ Calculate payroll")
+    print("8/ Count officers")
+    print("9/ Exit")
 
     option = input("Select option: ").strip()
     return option
 
 def add_member(names, ranks, divs, ids):
-    print("\n--- ADD MEMBER ---") # new member info
+    print("--- ADD MEMBER ---") # new member info
     new_member_name = input("Name: ").strip()
     new_rank = input("Rank: ").strip()
     new_division = input("Division: ").strip()
@@ -80,7 +80,7 @@ def add_member(names, ranks, divs, ids):
     print(f"Welcome to the crew, {new_member_name}")
 
 def update_rank(names, ranks, ids):
-    print("\n--- UPDATE RANK ---") # update member rank
+    print("--- UPDATE RANK ---") # update member rank
 
     name = input("Enter member name: ").strip() # asks user for name
 
@@ -103,6 +103,12 @@ def update_rank(names, ranks, ids):
 
     print(f"You have officially updated {name}'s rank to {new_rank}")
 
+def display_roster(names, ranks, divs, ids):
+    print("--- DISPLAY ROSTER ---") # update member rank
+    print("--------------------------------")
+
+    for i in range(len(names)): #displays crew details in parallel lists
+        print(names[i], "-", ranks[i], "-", divs[i], "-", ids[i])
 
 
     
