@@ -172,3 +172,14 @@ def calculate_payroll(ranks):
         
     return total # adds total
 - Function created to assign credit value for each crew member, based on their rank.
+
+10. count_officers(ranks) function
+def count_officers(ranks):
+    count = 0
+
+    for rank in ranks: # count variable gains 1 per commander + captain within the crew.
+        if rank == "Captain" or rank == "Commander":
+            count += 1
+
+    return count
+- This function gains totals up the amount of captains and commanders, and produces an integer in its return.

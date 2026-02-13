@@ -157,4 +157,11 @@ def calculate_payroll(ranks):
         
     return total # adds total
 
+def count_officers(ranks):
+    count = 0
 
+    for rank in ranks: # count variable gains 1 per commander + captain within the crew.
+        if rank == "Captain" or rank == "Commander":
+            count += 1
+
+    return count
