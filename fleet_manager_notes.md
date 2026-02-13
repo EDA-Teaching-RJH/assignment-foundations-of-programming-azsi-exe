@@ -49,7 +49,7 @@ def display_menu(user_name):
     return option
 - This updated display menu incorporates all functions created. Option for user to also create a username, addressed by the system, has also been created.
 
-4. add_member(names, ranks, divs, ids)
+4. add_member(names, ranks, divs, ids) function
 def add_member(names, ranks, divs, ids):
     print("\n--- ADD MEMBER ---")
     new_name = input("Name: ").strip()
@@ -84,3 +84,29 @@ def add_member(names, ranks, divs, ids):
 
     print("New member added successfully")
 - The add member function allows user to add new crew members. User asked for new memeber details. If members rank or division doesn't match list, user is reminded what was available. if id was similar to previously used ids attached to other crew members, it would remind user ids that are used.
+
+5. update_rank(names, ranks, ids) function
+def update_rank(names, ranks, ids):
+    print("\n--- UPDATE RANK ---") # update member rank
+
+    name = input("Enter member name: ").strip() # asks user for name
+
+    if name not in names: # defult output if name does not exist in the system
+        print("Name not valid.")
+        return
+    
+    idx = names.index(name) # finds position of the name in the list
+
+    new_rank = input("Enter new rank: ").strip()
+
+    if new_rank not in allowed_ranks: # check if rank matches list
+        print("Rank invalid")
+        print("Please choose from: ")
+        for r in allowed_ranks:
+            print(r)
+        return
+    
+    ranks[idx] = new_rank # makes sure the new rank updates in the same index as previous rank
+
+    print(f"You have officially updated {name}'s rank to {new_rank}")
+- Update rank was added to allow user to update any of the members ranks by first identifying the name in the names list. The system would find the positioning of the name in the list, and use it to identify the name and rank (as they are parallel lists). Once the user inputs a new rank (if it is included in he valid ranks), it would update. If nto user would be reminded of ranks allowed.

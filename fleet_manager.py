@@ -22,7 +22,7 @@ def init_database():
     return names, ranks, divs, ids
 
 def display_menu(user_name):
-    if user_name == " ": # .strip() so that user can't have a name with spaces, e.g. "   "
+    if user_name == " ": # .strip() so that user can't have a name with spaces or nothing, e.g. "   ", or ""
         user_name = input("What is your name?: ").strip()
 
     print ("\n-------------------------")
@@ -46,7 +46,7 @@ def display_menu(user_name):
 
 def add_member(names, ranks, divs, ids):
     print("\n--- ADD MEMBER ---") # new member info
-    new_name = input("Name: ").strip()
+    new_member_name = input("Name: ").strip()
     new_rank = input("Rank: ").strip()
     new_division = input("Division: ").strip()
     new_id = input("ID: ").strip()
@@ -72,10 +72,37 @@ def add_member(names, ranks, divs, ids):
         return
     
     # members added to parallel lists
-    names.append(new_name)
+    names.append(new_member_name)
     ranks.append(new_rank)
     divs.append(new_division)
     ids.append(new_id)
 
-    print("New member added successfully")
+    print(f"Welcome to the crew, {new_member_name}")
 
+def update_rank(names, ranks, ids):
+    print("\n--- UPDATE RANK ---") # update member rank
+
+    name = input("Enter member name: ").strip() # asks user for name
+
+    if name not in names: # defult output if name does not exist in the system
+        print("Name not valid.")
+        return
+    
+    idx = names.index(name) # finds position of the name in the list
+
+    new_rank = input("Enter new rank: ").strip()
+
+    if new_rank not in allowed_ranks: # check if rank matches list
+        print("Rank invalid")
+        print("Please choose from: ")
+        for r in allowed_ranks:
+            print(r)
+        return
+    
+    ranks[idx] = new_rank # makes sure the new rank updates in the same index as previous rank
+
+    print(f"You have officially updated {name}'s rank to {new_rank}")
+
+
+
+    
