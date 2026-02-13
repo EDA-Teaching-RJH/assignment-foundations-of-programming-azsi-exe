@@ -151,3 +151,24 @@ def filter_by_division(names, divs):
         if divs[i] == division:
             print(names[i])
 - This function allows user to filter through parallel lists to find crew members within the division searched for.
+
+9. calculate_payroll(ranks) function
+def calculate_payroll(ranks):
+    total = 0 
+
+    for rank in ranks: # assign credit values to each rank
+        if rank == "Captain":
+            total += 1600
+        elif rank == "Commander":
+            total+= 1100
+        elif rank == "Commander":
+            total+= 700
+        elif rank == "Commander":
+            total+= 400
+        elif rank == "Commander":
+            total+= 200
+        elif rank == "Commander":
+            total+= 100
+        
+    return total # adds total
+- Function created to assign credit value for each crew member, based on their rank.

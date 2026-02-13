@@ -125,7 +125,7 @@ def search_crew(names, ranks, divs, ids):
 def filter_by_division(names, divs):
     print("--- FILTER BY DIVISION ---")
 
-    division = input("Enter division: ").strip()
+    division = input("Enter division (Command/ Operations/ Security/ Sciences): ").strip()
 
     if division not in allowed_divisions:
         print("Division invalid")
@@ -137,3 +137,24 @@ def filter_by_division(names, divs):
     for i in range(len(names)): # loops through list, prints crew members
         if divs[i] == division:
             print(names[i])
+
+def calculate_payroll(ranks):
+    total = 0 
+
+    for rank in ranks: # assign credit values to each rank
+        if rank == "Captain":
+            total += 1600
+        elif rank == "Commander":
+            total+= 1100
+        elif rank == "Commander":
+            total+= 700
+        elif rank == "Commander":
+            total+= 400
+        elif rank == "Commander":
+            total+= 200
+        elif rank == "Commander":
+            total+= 100
+        
+    return total # adds total
+
+
