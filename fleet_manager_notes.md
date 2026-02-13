@@ -109,7 +109,7 @@ def update_rank(names, ranks, ids):
     ranks[idx] = new_rank # makes sure the new rank updates in the same index as previous rank
 
     print(f"You have officially updated {name}'s rank to {new_rank}")
-- Update rank was added to allow user to update any of the members ranks by first identifying the name in the names list. The system would find the positioning of the name in the list, and use it to identify the name and rank (as they are parallel lists). Once the user inputs a new rank (if it is included in he valid ranks), it would update. If nto user would be reminded of ranks allowed.
+- Update rank was added to allow user to update any of the members ranks by first identifying the name in the names list. The system would find the positioning of the name in the list, and use it to identify the name and rank (as they are parallel lists). Once the user inputs a new rank (if it is included in the allowed ranks), it would update. If nto user would be reminded of ranks allowed.
 
 6. display_roster(names, ranks, divs, ids) function
 def display_roster(names, ranks, divs, ids):
@@ -133,3 +133,21 @@ def search_crew(names, ranks, divs, ids):
         
         print(f"Nothing matches {search_term}.")
 - This menu option allows user to search name and output their details
+
+8. filter_by_division(names, divs) function
+def filter_by_division(names, divs):
+    print("--- FILTER BY DIVISION ---")
+
+    division = input("Enter division: ").strip()
+
+    if division not in allowed_divisions:
+        print("Division invalid")
+        print("Please choose from: ")
+        for d in allowed_divisions:
+            print(d)
+        return
+    
+    for i in range(len(names)): # loops through list, prints crew members
+        if divs[i] == division:
+            print(names[i])
+- This function allows user to filter through parallel lists to find crew members within the division searched for.

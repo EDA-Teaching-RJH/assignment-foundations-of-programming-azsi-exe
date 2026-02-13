@@ -122,4 +122,18 @@ def search_crew(names, ranks, divs, ids):
         
         print(f"Nothing matches {search_term}.")
 
+def filter_by_division(names, divs):
+    print("--- FILTER BY DIVISION ---")
 
+    division = input("Enter division: ").strip()
+
+    if division not in allowed_divisions:
+        print("Division invalid")
+        print("Please choose from: ")
+        for d in allowed_divisions:
+            print(d)
+        return
+    
+    for i in range(len(names)): # loops through list, prints crew members
+        if divs[i] == division:
+            print(names[i])
