@@ -119,3 +119,17 @@ def display_roster(names, ranks, divs, ids):
     for i in range(len(names)): #displays crew details in parallel lists
         print(names[i], "-", ranks[i], "-", divs[i], "-", ids[i])
 - Display roster created to display all crew members details currently within the parallel lists, using a for loop.
+
+7. search_crew(names, ranks, divs, ids) function
+def search_crew(names, ranks, divs, ids):
+    print("--- SEARCH CREW ---")
+
+    search_term = input("Enter search term: ").strip()
+
+    for i in range(len(names)):
+        if search_term == names[i]:
+            print(names[i], "-", ranks[i], "-", divs[i], "-", ids[i])
+            return
+        
+        print(f"Nothing matches {search_term}.")
+- This menu option allows user to search name and output their details

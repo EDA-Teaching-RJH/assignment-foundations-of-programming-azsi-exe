@@ -77,7 +77,7 @@ def add_member(names, ranks, divs, ids):
     divs.append(new_division)
     ids.append(new_id)
 
-    print(f"Welcome to the crew, {new_member_name}")
+    print(f"Welcome to the crew, {new_member_name}.")
 
 def update_rank(names, ranks, ids):
     print("--- UPDATE RANK ---") # update member rank
@@ -101,7 +101,7 @@ def update_rank(names, ranks, ids):
     
     ranks[idx] = new_rank # makes sure the new rank updates in the same index as previous rank
 
-    print(f"You have officially updated {name}'s rank to {new_rank}")
+    print(f"You have officially updated {name}'s rank to {new_rank}.")
 
 def display_roster(names, ranks, divs, ids):
     print("--- DISPLAY ROSTER ---") # update member rank
@@ -110,5 +110,16 @@ def display_roster(names, ranks, divs, ids):
     for i in range(len(names)): #displays crew details in parallel lists
         print(names[i], "-", ranks[i], "-", divs[i], "-", ids[i])
 
+def search_crew(names, ranks, divs, ids):
+    print("--- SEARCH CREW ---")
 
-    
+    search_term = input("Enter search term: ").strip()
+
+    for i in range(len(names)):
+        if search_term == names[i]:
+            print(names[i], "-", ranks[i], "-", divs[i], "-", ids[i])
+            return
+        
+        print(f"Nothing matches {search_term}.")
+
+
