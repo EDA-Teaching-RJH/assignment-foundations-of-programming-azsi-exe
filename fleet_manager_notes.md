@@ -26,7 +26,7 @@ def init_database():
 
 3. display_menu() function
 def display_menu(user_name):
-    if user_name == " ":
+    if user_name.strip() == " ":
         user_name = input("What is your name?: ").strip()
 
     print ("\n-------------------------")
@@ -131,7 +131,7 @@ def search_crew(names, ranks, divs, ids):
             print(names[i], "-", ranks[i], "-", divs[i], "-", ids[i])
             return
         
-        print(f"Nothing matches {search_term}.")
+    print(f"Nothing matches {search_term}.")
 - This menu option allows user to search name and output their details
 
 8. filter_by_division(names, divs) function
@@ -161,13 +161,13 @@ def calculate_payroll(ranks):
             total += 1600
         elif rank == "Commander":
             total+= 1100
-        elif rank == "Commander":
+        elif rank == "Lt. Commander":
             total+= 700
-        elif rank == "Commander":
+        elif rank == "Lieutenant":
             total+= 400
-        elif rank == "Commander":
+        elif rank == "Lt. Junior Grade":
             total+= 200
-        elif rank == "Commander":
+        elif rank == "Ensign":
             total+= 100
         
     return total # adds total
@@ -183,3 +183,39 @@ def count_officers(ranks):
 
     return count
 - This function gains totals up the amount of captains and commanders, and produces an integer in its return.
+
+11. central main() loop
+def main():
+    names, ranks, divs, ids = init_database()
+    user_name = input("what is your name?: ").strip()
+
+    while true:
+        option = display_menu(user_name)
+
+        if option == "1":
+            add_member(names, ranks, divs, ids)
+        elif option == "2":
+            remove_member(names, ranks, divs, ids)
+        elif option == "3":
+            update_rank(names, ranks, ids)
+        elif option == "4":
+            display_roster(names, ranks, divs, ids)
+        elif option == "5":
+            search_crew(names, ranks, divs, ids)
+        elif option == "6":
+            filter_by_division(names, divs)
+        elif option == "7":
+            total = count_officers(ranks)
+            print(f"Total payroll: {total}")
+        elif option == "8":
+            total = count_officers(ranks)
+            print(f"Total officers: {total}")
+        elif option == "9":
+            print("Goodbye.")
+            break
+        else:
+            print("Invalid input.")
+
+if __name__ == "__main__":
+    main()
+- Central main function created to control the fleet manager. It forms as a way to connect all functions to the menu.

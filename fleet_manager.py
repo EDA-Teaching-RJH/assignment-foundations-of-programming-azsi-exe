@@ -22,9 +22,6 @@ def init_database():
     return names, ranks, divs, ids
 
 def display_menu(user_name):
-    if user_name == " ": # .strip() so that user can't have a name with spaces or nothing, e.g. "   ", or ""
-        user_name = input("What is your name?: ").strip()
-
     print ("-------------------------")
     print("WELCOME TO FLEET COMMAND")
     print("WELCOME BACK: ", user_name)
@@ -41,7 +38,7 @@ def display_menu(user_name):
     print("8/ Count officers")
     print("9/ Exit")
 
-    option = input("Select option: ").strip()
+    option = input("Select option: ").strip() # .strip() = removes any accidental spaces
     return option
 
 def add_member(names, ranks, divs, ids):
@@ -120,7 +117,7 @@ def search_crew(names, ranks, divs, ids):
             print(names[i], "-", ranks[i], "-", divs[i], "-", ids[i])
             return
         
-        print(f"Nothing matches {search_term}.")
+    print(f"Nothing matches {search_term}.")
 
 def filter_by_division(names, divs):
     print("--- FILTER BY DIVISION ---")
@@ -146,13 +143,13 @@ def calculate_payroll(ranks):
             total += 1600
         elif rank == "Commander":
             total+= 1100
-        elif rank == "Commander":
+        elif rank == "Lt. Commander":
             total+= 700
-        elif rank == "Commander":
+        elif rank == "Lieutenant":
             total+= 400
-        elif rank == "Commander":
+        elif rank == "Lt. Junior Grade":
             total+= 200
-        elif rank == "Commander":
+        elif rank == "Ensign":
             total+= 100
         
     return total # adds total
@@ -165,3 +162,37 @@ def count_officers(ranks):
             count += 1
 
     return count
+
+def main():
+    names, ranks, divs, ids = init_database() # Creates parallel lists with starting data
+    user_name = input("What is your name?: ").strip()
+
+    while True: # Loop will run until user selects 9
+        option = display_menu(user_name) # Shows menu and stores users choice
+
+        if option == "1":
+            add_member(names, ranks, divs, ids)
+        elif option == "2":
+            remove_member(names, ranks, divs, ids)
+        elif option == "3":
+            update_rank(names, ranks, ids)
+        elif option == "4":
+            display_roster(names, ranks, divs, ids)
+        elif option == "5":
+            search_crew(names, ranks, divs, ids)
+        elif option == "6":
+            filter_by_division(names, divs)
+        elif option == "7":
+            total = calculate_payroll(ranks)
+            print(f"Total payroll: {total}")
+        elif option == "8":
+            total = count_officers(ranks)
+            print(f"Total officers: {total}")
+        elif option == "9":
+            print("Goodbye.")
+            break
+        else:
+            print("Invalid input.")
+
+if __name__ == "__main__":
+    main()
