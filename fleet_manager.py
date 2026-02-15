@@ -27,7 +27,7 @@ def display_menu(user_name):
     print("WELCOME BACK: ", user_name)
     print ("-------------------------")
 
-    print("--- MENU ---") # menu and options available to user
+    print("--- MENU ---") # menu and options available to user to choose from
     print("1/ Add member")
     print("2/ Remove member")
     print("3/ Update rank")
