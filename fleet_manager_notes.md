@@ -85,7 +85,37 @@ def add_member(names, ranks, divs, ids):
     print("New member added successfully")
 - The add member function allows user to add new crew members. User asked for new memeber details. If members rank or division doesn't match list, user is reminded what was available. if id was similar to previously used ids attached to other crew members, it would remind user ids that are used.
 
-5. update_rank(names, ranks, ids) function
+5. remove_member(names, ranks, divs, ids)
+def remove_member(names, ranks, divs, ids):
+    print("--- REMOVE MEMBER ---")
+
+    remove_id = input("Enter the member ID you want to remove: ").strip()
+
+    if remove_id not in ids: # checks if the ID the user entered is within the list. if not, user is shown the list of IDs available.
+        print(f"{remove_id} not valid.")
+        print("Please choose an ID from: ")
+        for i in ids:
+            print(i)
+        return
+    
+    idx = ids.index(remove_id)
+
+    print("Are you sure you want to remove: ") # asks for confirmation to user
+    print(names[idx], "-", ranks[idx], "-", divs[idx], "-", ids[idx])
+
+    confirm = input("Is this correct? (Yes/No): ").strip().capitalize() 
+
+    if confirm == "Yes":
+        names.pop(idx) # removes index position in the list, deleting the member.
+        ranks.pop(idx)
+        divs.pop(idx)
+        ids.pop(idx)
+        print("Member removed successfully.")
+    else:
+        print("Cancelled.")
+- Removing a member, the user inputs the ID of the user, and confirms details of the member. If user gives their confirmation, the member is removed.
+
+6. update_rank(names, ranks, ids) function
 def update_rank(names, ranks, ids):
     print("\n--- UPDATE RANK ---") # update member rank
 
@@ -111,7 +141,7 @@ def update_rank(names, ranks, ids):
     print(f"You have officially updated {name}'s rank to {new_rank}")
 - Update rank was added to allow user to update any of the members ranks by first identifying the name in the names list. The system would find the positioning of the name in the list, and use it to identify the name and rank (as they are parallel lists). Once the user inputs a new rank (if it is included in the allowed ranks), it would update. If nto user would be reminded of ranks allowed.
 
-6. display_roster(names, ranks, divs, ids) function
+7. display_roster(names, ranks, divs, ids) function
 def display_roster(names, ranks, divs, ids):
     print("--- DISPLAY ROSTER ---") # update member rank
     print("--------------------------------")
@@ -120,7 +150,7 @@ def display_roster(names, ranks, divs, ids):
         print(names[i], "-", ranks[i], "-", divs[i], "-", ids[i])
 - Display roster created to display all crew members details currently within the parallel lists, using a for loop.
 
-7. search_crew(names, ranks, divs, ids) function
+8. search_crew(names, ranks, divs, ids) function
 def search_crew(names, ranks, divs, ids):
     print("--- SEARCH CREW ---")
 
@@ -134,7 +164,7 @@ def search_crew(names, ranks, divs, ids):
     print(f"Nothing matches {search_term}.")
 - This menu option allows user to search name and output their details
 
-8. filter_by_division(names, divs) function
+9. filter_by_division(names, divs) function
 def filter_by_division(names, divs):
     print("--- FILTER BY DIVISION ---")
 
@@ -152,7 +182,7 @@ def filter_by_division(names, divs):
             print(names[i])
 - This function allows user to filter through parallel lists to find crew members within the division searched for.
 
-9. calculate_payroll(ranks) function
+10. calculate_payroll(ranks) function
 def calculate_payroll(ranks):
     total = 0 
 
@@ -173,7 +203,7 @@ def calculate_payroll(ranks):
     return total # adds total
 - Function created to assign credit value for each crew member, based on their rank.
 
-10. count_officers(ranks) function
+11. count_officers(ranks) function
 def count_officers(ranks):
     count = 0
 
@@ -184,7 +214,7 @@ def count_officers(ranks):
     return count
 - This function gains totals up the amount of captains and commanders, and produces an integer in its return.
 
-11. central main() loop
+12. central main() loop
 def main():
     names, ranks, divs, ids = init_database()
     user_name = input("what is your name?: ").strip()

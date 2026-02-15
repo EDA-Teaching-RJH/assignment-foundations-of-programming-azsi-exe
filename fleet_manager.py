@@ -15,7 +15,7 @@ allowed_divisions = [
 ]
 
 def init_database():
-    names = ["Picard", "Riker", "Data", "Worf", "Spock"]
+    names = ["Picard", "Riker", "Data", "Worf", "Spock"] # created initial database of crew members
     ranks = ["Captain", "Commander", "Lt. Commander", "Lieutenant", "Lt. Commander"]
     divs = ["Command", "Command", "Operations", "Security", "Sciences"]
     ids = ["01", "02", "03", "04", "05"]
@@ -27,7 +27,7 @@ def display_menu(user_name):
     print("WELCOME BACK: ", user_name)
     print ("-------------------------")
 
-    print("--- MENU ---")
+    print("--- MENU ---") # menu and options available to user
     print("1/ Add member")
     print("2/ Remove member")
     print("3/ Update rank")
@@ -43,7 +43,7 @@ def display_menu(user_name):
 
 def add_member(names, ranks, divs, ids):
     print("--- ADD MEMBER ---") # new member info
-    new_member_name = input("Name: ").strip()
+    new_member_name = input("Name: ").strip().capitalize()
     new_rank = input("Rank: ").strip()
     new_division = input("Division: ").strip()
     new_id = input("ID: ").strip()
@@ -76,10 +76,39 @@ def add_member(names, ranks, divs, ids):
 
     print(f"Welcome to the crew, {new_member_name}.")
 
+def remove_member(names, ranks, divs, ids):
+    print("--- REMOVE MEMBER ---")
+
+    remove_id = input("Enter the member ID you want to remove: ").strip()
+
+    if remove_id not in ids: # checks if the ID the user entered is within the list. if not, user is shown the list of IDs available.
+        print(f"{remove_id} not valid.")
+        print("Please choose an ID from: ")
+        for i in ids:
+            print(i)
+        return
+    
+    idx = ids.index(remove_id)
+
+    print("Are you sure you want to remove: ") # asks for confirmation to user
+    print(names[idx], "-", ranks[idx], "-", divs[idx], "-", ids[idx])
+
+    confirm = input("Is this correct? (Yes/No): ").strip().capitalize() 
+
+    if confirm == "Yes":
+        names.pop(idx) # removes index position in the list, deleting the member.
+        ranks.pop(idx)
+        divs.pop(idx)
+        ids.pop(idx)
+        print("Member removed successfully.")
+    else:
+        print("Cancelled.")
+
+
 def update_rank(names, ranks, ids):
     print("--- UPDATE RANK ---") # update member rank
 
-    name = input("Enter member name: ").strip() # asks user for name
+    name = input("Enter member name: ").strip().capitalize() # asks user for name
 
     if name not in names: # defult output if name does not exist in the system
         print("Name not valid.")
@@ -113,7 +142,7 @@ def search_crew(names, ranks, divs, ids):
     search_term = input("Enter search term: ").strip()
 
     for i in range(len(names)):
-        if search_term == names[i]:
+        if search_term.lower() in names[i].lower():
             print(names[i], "-", ranks[i], "-", divs[i], "-", ids[i])
             return
         
@@ -165,7 +194,7 @@ def count_officers(ranks):
 
 def main():
     names, ranks, divs, ids = init_database() # Creates parallel lists with starting data
-    user_name = input("What is your name?: ").strip()
+    user_name = input("What is your name?: ").strip().capitalize()
 
     while True: # Loop will run until user selects 9
         option = display_menu(user_name) # Shows menu and stores users choice
